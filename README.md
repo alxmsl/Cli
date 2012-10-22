@@ -1,6 +1,6 @@
 Cli
 =============
-This is simple set of classes for support php-cli scripts
+This is simple set of classes for support php-cli script options
 
 Usage example
 -------
