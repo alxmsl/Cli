@@ -115,7 +115,7 @@ final class CommandPosix extends Command {
         $long = $Option->getLong();
         if (isset($this->events[$long])) {
             $Handler = $this->events[$long];
-            $Handler($value);
+            $Handler($long, $value);
         }
     }
 }
