@@ -57,6 +57,15 @@ final class CommandPosix extends Command {
     }
 
     /**
+     * Prepare option value from getopt library
+     * @param string|bool $value value from getopt result
+     * @return string|bool prepared value
+     */
+    private function getPreparedValue($value) {
+        return $value === false ? true : $value;
+    }
+
+    /**
      * POSIX parse command line method
      */
     public function parse() {
@@ -70,10 +79,10 @@ final class CommandPosix extends Command {
                 case isset($options[$short]) && isset($options[$long]):
                     throw new DuplicateOptionException();
                 case isset($options[$short]):
-                    $this->setOptionValue($Option, $options[$short]);
+                    $this->setOptionValue($Option, $this->getPreparedValue($options[$short]));
                     break;
                 case isset($options[$long]):
-                    $this->setOptionValue($Option, $options[$long]);
+                    $this->setOptionValue($Option, $this->getPreparedValue($options[$long]));
                     break;
                 case $Option->isRequired():
                     throw new RequiredOptionException();
