@@ -15,6 +15,10 @@ You can use boolean or string option values
     php script.php --change=all -a  # option 'change' has string value 'all', and option 'aplly' has boolean value true
     php script.php --change=all     # option 'aplly' has boolean value false. It's not set
 
+If you use string values, that containing spaces, quote its
+
+    php script.php --change="all the world"
+
 You can create required options or not
 
     php script.php -s Test          # option 'script' is required
