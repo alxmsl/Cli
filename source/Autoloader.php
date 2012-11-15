@@ -3,19 +3,19 @@
 namespace Cli;
 
 // append Cli autoloader
-spl_autoload_register(array('\Cli\Cli', 'autoload'));
+spl_autoload_register(array('\Cli\Autoloader', 'autoload'));
 
 /**
  * Base class
  * @author alxmsl
  * @date 10/22/12
  */
-final class Cli {
+final class Autoloader {
     /**
      * @var array array of available classes
      */
     private static $classes = array(
-        'Cli\\Cli'          => 'Cli.php',
+        'Cli\\Autoloader'   => 'Autoloader.php',
         'Cli\\Command'      => 'Command.php',
         'Cli\\CommandPosix' => 'CommandPosix.php',
         'Cli\\Option'       => 'Option.php',

@@ -6,7 +6,7 @@
  */
 
 // Firstly include base class
-include('../source/Cli.php');
+include('../source/Autoloader.php');
 
 use \Cli\CommandPosix,
     \Cli\Option;
