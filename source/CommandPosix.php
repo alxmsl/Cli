@@ -115,11 +115,12 @@ final class CommandPosix extends Command {
                 $string .= $temp . ' ';
             }
 
-            $where[] = '-' . $short . ', --' . $long . '  - ' . $Option->getDescription() . "\n";
+            $where[] = '-' . $short . ', --' . $long . '  - ' . $Option->getDescription();
         }
         $string .= "\n";
-        $string .= implode("\n", $where);
+        $string .= implode("\n", $where) . "\n";
         echo $string;
+        exit(0);
     }
 
     /**
