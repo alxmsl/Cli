@@ -65,8 +65,12 @@ abstract class Command {
         }
     }
 
+    /**
+     * Append help parameter
+     * @param string $description description of option. Default value is empty
+     */
     public function appendHelpParameter($description) {
-        $Option = new Option('help', 'h', $description);
+        $Option = new HelpOption($description);
         $Self = $this;
         $this->appendParameter($Option, function() use ($Self) {
             $Self->displayHelp();

@@ -67,10 +67,14 @@ final class CommandPosix extends Command {
 
     /**
      * POSIX parse command line method
+     * @param bool $panic throw exception about required option absence
+     * @throws DuplicateOptionException when option value duplicated
+     * @throws RequiredOptionException when required options is not set
      */
-    public function parse() {
+    public function parse($panic = false) {
         list($shorts, $longs) = $this->getOptionsSearchStrings();
         $options = getopt($shorts, $longs);
+        $Exception = null;
         foreach ($this->parameters as $Option) {
             /** @var $Option Option */
             $short = $Option->getShort();
@@ -85,8 +89,12 @@ final class CommandPosix extends Command {
                     $this->setOptionValue($Option, $this->getPreparedValue($options[$long]));
                     break;
                 case $Option->isRequired():
-                    throw new RequiredOptionException();
+                    $Exception = new RequiredOptionException($long);
             }
+        }
+
+        if ($panic && !is_null($Exception)) {
+            throw $Exception;
         }
     }
 

@@ -14,8 +14,14 @@ use \Cli\CommandPosix,
 // Create command instance
 $Command = new CommandPosix();
 
-// Append created option for help to command. And...
+// Append created option for help to command
 $Command->appendHelpParameter('show help screen option');
+
+// Append one required option. And...
+$Command->appendParameter(new Option('option', 'o', 'some option', Option::TYPE_BOOLEAN, true));
 
 // ...just parse the command
 $Command->parse();
+
+// If will exception, when required option is not set - use string below
+//$Command->parse(true);

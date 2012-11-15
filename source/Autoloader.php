@@ -18,6 +18,7 @@ final class Autoloader {
         'Cli\\Autoloader'   => 'Autoloader.php',
         'Cli\\Command'      => 'Command.php',
         'Cli\\CommandPosix' => 'CommandPosix.php',
+        'Cli\\HelpOption'   => 'HelpOption.php',
         'Cli\\Option'       => 'Option.php',
         'Cli\\Parameter'    => 'Parameter.php',
     );

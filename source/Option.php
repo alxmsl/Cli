@@ -7,7 +7,7 @@ namespace Cli;
  * @author alxmsl
  * @date 10/22/12
  */
-final class Option extends Parameter {
+class Option extends Parameter {
     /**
      * Available option types
      */

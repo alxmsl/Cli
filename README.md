@@ -55,16 +55,29 @@ Usage example
         \Cli\Option;
 
     // Just create command line option instances
-    $OptionHelp = new \Cli\Option('help', 'h', 'show help screen option');
+    $OptionHelp = new Option('help', 'h', 'show help screen option');
 
     // Create command instance
-    $Command = new \Cli\CommandPosix();
+    $Command = new CommandPosix();
 
-    // Append created option instances to command. Define option handlers, if needed. And...
-    $Command->appendParameter($OptionHelp, function() use ($Command) {
-        $Command->displayHelp();
-    });
+    // Append created option for help to command
+    $Command->appendHelpParameter('show help screen option');
+
+    // Append one required option. And...
+    $Command->appendParameter(new Option('option', 'o', 'some option', Option::TYPE_BOOLEAN, true));
 
     // ...just parse the command
     $Command->parse();
 
+If you will need the exception when required options value will not set, try:
+
+    $Command->parse(true);
+
+You will see something like this:
+
+    alxmsl:~/cli/tests$ php usage.php
+    PHP Fatal error:  Uncaught exception 'Cli\RequiredOptionException' with message 'option' in /home/alxmsl/cli/source/CommandPosix.php:92
+    Stack trace:
+    #0 /home/alxmsl/cli/tests/usage.php(27): Cli\CommandPosix->parse(true)
+    #1 {main}
+      thrown in /home/alxmsl/sources/cli/CommandPosix.php on line 92
