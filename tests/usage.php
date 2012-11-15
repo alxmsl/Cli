@@ -11,16 +11,11 @@ include('../source/Autoloader.php');
 use \Cli\CommandPosix,
     \Cli\Option;
 
-// Just create command line option instances
-$OptionHelp = new \Cli\Option('help', 'h', 'show help screen option');
-
 // Create command instance
-$Command = new \Cli\CommandPosix();
+$Command = new CommandPosix();
 
-// Append created option instances to command. Define option handlers, if needed. And...
-$Command->appendParameter($OptionHelp, function() use ($Command) {
-    $Command->displayHelp();
-});
+// Append created option for help to command. And...
+$Command->appendHelpParameter('show help screen option');
 
 // ...just parse the command
 $Command->parse();

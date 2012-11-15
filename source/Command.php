@@ -65,6 +65,14 @@ abstract class Command {
         }
     }
 
+    public function appendHelpParameter($description) {
+        $Option = new Option('help', 'h', $description);
+        $Self = $this;
+        $this->appendParameter($Option, function() use ($Self) {
+            $Self->displayHelp();
+        });
+    }
+
     /**
      * Set event for added parameter
      * @param Parameter $Parameter adding parameter instance
@@ -97,6 +105,11 @@ abstract class Command {
      * Abstract cache support function
      */
     abstract protected function clearCache();
+
+    /**
+     * Display command help
+     */
+    abstract public function displayHelp();
 }
 
 /**
