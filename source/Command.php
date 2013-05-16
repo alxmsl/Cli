@@ -42,8 +42,6 @@ abstract class Command {
             default:
                 throw new IncorrectEnvironmentException();
         }
-        $this->script = $_SERVER['_'];
-        $this->command = $_SERVER['argv'][0];
     }
 
     /**
