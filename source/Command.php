@@ -32,7 +32,14 @@ abstract class Command {
         switch (true) {
             case PHP_SAPI != 'cli':
                 throw new IncorrectSAPIException();
-            case !array_key_exists('_', $_SERVER) || is_null($_SERVER['_']):
+            case array_key_exists('_', $_SERVER) && !is_null($_SERVER['_']):
+                $this->script = $_SERVER['_'];
+                $this->command = $_SERVER['argv'][0];
+                break;
+            case array_key_exists('SCRIPT_NAME', $_SERVER):
+                $this->command = $_SERVER['SCRIPT_NAME'];
+                break;
+            default:
                 throw new IncorrectEnvironmentException();
         }
         $this->script = $_SERVER['_'];
