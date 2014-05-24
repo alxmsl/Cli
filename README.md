@@ -81,3 +81,10 @@ You will see something like this:
     #0 /home/alxmsl/cli/tests/usage.php(27): Cli\CommandPosix->parse(true)
     #1 {main}
       thrown in /home/alxmsl/sources/cli/CommandPosix.php on line 92
+
+License
+-------
+Copyright © 2014 Alexey Maslov <alexey.y.maslov@gmail.com>
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the COPYING file for more details.
