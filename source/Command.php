@@ -1,6 +1,12 @@
 <?php
 
-namespace Cli;
+namespace alxmsl\Cli;
+use alxmsl\Cli\Exception\IncorrectEnvironmentException;
+use alxmsl\Cli\Exception\IncorrectSAPIException;
+use alxmsl\Cli\Exception\ParameterEventTypeException;
+use alxmsl\Cli\Exception\ParameterNotFoundException;
+use alxmsl\Cli\Exception\UnsupportedParameterTypeException;
+use Closure;
 
 /**
  * Abstract command class
@@ -28,6 +34,10 @@ abstract class Command {
      */
     protected $events = array();
 
+    /**
+     * @thorws IncorrectSAPIException when PHP SAPI is not CLI
+     * @throws IncorrectEnvironmentException when script name was not find
+     */
     public function __construct() {
         switch (true) {
             case PHP_SAPI != 'cli':
@@ -57,7 +67,7 @@ abstract class Command {
             case $Parameter instanceof Option:
                 $this->parameters[$Parameter->getLong()] = $Parameter;
                 if (!is_null($Handler)) {
-                    if ($Handler instanceof \Closure) {
+                    if ($Handler instanceof Closure) {
                         $this->setEvent($Parameter, $Handler);
                     } else {
                         throw new ParameterEventTypeException();
@@ -85,11 +95,11 @@ abstract class Command {
     /**
      * Set event for added parameter
      * @param Parameter $Parameter adding parameter instance
-     * @param \Closure $Handler closure function if parameter will be define
+     * @param Closure $Handler closure function if parameter will be define
      * @throws ParameterNotFoundException if $Parameter instance is not added to command
      * @throws UnsupportedParameterTypeException if $Parameter instance has unsupported type
      */
-    public function setEvent(Parameter $Parameter, \Closure $Handler) {
+    public function setEvent(Parameter $Parameter, Closure $Handler) {
         /** @var $Parameter Option */
         switch (true) {
             case $Parameter instanceof Option:
@@ -120,19 +130,3 @@ abstract class Command {
      */
     abstract public function displayHelp();
 }
-
-/**
- * Base Cli exception. All exception extends this
- */
-class CliLogicException extends \Exception {}
-final class IncorrectSAPIException extends CliLogicException {}
-final class IncorrectEnvironmentException extends CliLogicException {}
-final class UnsupportedParameterTypeException extends CliLogicException {}
-final class IncorrectParameterValueTypeException extends CliLogicException {}
-final class ParameterNotFoundException extends CliLogicException {}
-final class ParameterEventTypeException extends CliLogicException {}
-
-class CliCallException extends CliLogicException {}
-final class DuplicateOptionException extends CliCallException {}
-final class RequiredOptionException extends CliCallException {}
-

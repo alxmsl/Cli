@@ -1,6 +1,6 @@
 <?php
 
-namespace Cli;
+namespace alxmsl\Cli;
 
 /**
  * Abstract command line parameter class

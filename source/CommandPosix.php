@@ -1,6 +1,8 @@
 <?php
 
-namespace Cli;
+namespace alxmsl\Cli;
+use alxmsl\Cli\Exception\DuplicateOptionException;
+use alxmsl\Cli\Exception\RequiredOptionException;
 
 /**
  * Class for POSIX command line support

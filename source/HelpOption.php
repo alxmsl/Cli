@@ -1,6 +1,6 @@
 <?php
 
-namespace Cli;
+namespace alxmsl\Cli;
 
 /**
  * Help option class
@@ -11,8 +11,8 @@ final class HelpOption extends Option {
     /**
      * Long and short option names
      */
-    const   NAME_LONG   = 'help',
-            NAME_SHORT  = 'h';
+    const NAME_LONG   = 'help',
+          NAME_SHORT  = 'h';
 
     /**
      * @param string $description description of option. Default value is empty

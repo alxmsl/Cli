@@ -1,6 +1,8 @@
 <?php
 
-namespace Cli;
+namespace alxmsl\Cli;
+use alxmsl\Cli\Exception\IncorrectParameterValueTypeException;
+use UnexpectedValueException;
 
 /**
  * POSIX option class
@@ -11,8 +13,8 @@ class Option extends Parameter {
     /**
      * Available option types
      */
-    const   TYPE_BOOLEAN    = 0,
-            TYPE_STRING     = 1;
+    const TYPE_BOOLEAN    = 0,
+          TYPE_STRING     = 1;
 
     /**
      * @var string long name of option
@@ -40,17 +42,18 @@ class Option extends Parameter {
      * @param string $description description of option. Default value is empty
      * @param int $type option value type. Default value is boolean
      * @param bool $required option requirements. Default value is false
+     * @throws UnexpectedValueException if value name is empty
      */
     public function __construct($long, $short, $description = '', $type = self::TYPE_BOOLEAN, $required = false) {
         parent::__construct($description, $required);
         $this->long = (string) $long;
         if (empty($this->long)) {
-            throw new \UnexpectedValueException();
+            throw new UnexpectedValueException();
         }
 
         $this->short = substr($short, 0, 1);
         if (empty($this->short)) {
-            throw new \UnexpectedValueException();
+            throw new UnexpectedValueException();
         }
 
         $this->type = (int) $type;

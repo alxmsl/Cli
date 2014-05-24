@@ -8,8 +8,8 @@
 // Firstly include base class
 include('../source/Autoloader.php');
 
-use \Cli\CommandPosix,
-    \Cli\Option;
+use alxmsl\Cli\CommandPosix;
+use alxmsl\Cli\Option;
 
 // Create command instance
 $Command = new CommandPosix();

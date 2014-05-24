@@ -1,9 +1,9 @@
 <?php
 
-namespace Cli;
+namespace alxmsl\Cli;
 
 // append Cli autoloader
-spl_autoload_register(array('\Cli\Autoloader', 'autoload'));
+spl_autoload_register(array('alxmsl\Cli\Autoloader', 'autoload'));
 
 /**
  * Base class
@@ -15,12 +15,22 @@ final class Autoloader {
      * @var array array of available classes
      */
     private static $classes = array(
-        'Cli\\Autoloader'   => 'Autoloader.php',
-        'Cli\\Command'      => 'Command.php',
-        'Cli\\CommandPosix' => 'CommandPosix.php',
-        'Cli\\HelpOption'   => 'HelpOption.php',
-        'Cli\\Option'       => 'Option.php',
-        'Cli\\Parameter'    => 'Parameter.php',
+        'alxmsl\\Cli\\Autoloader'   => 'Autoloader.php',
+        'alxmsl\\Cli\\Command'      => 'Command.php',
+        'alxmsl\\Cli\\CommandPosix' => 'CommandPosix.php',
+        'alxmsl\\Cli\\HelpOption'   => 'HelpOption.php',
+        'alxmsl\\Cli\\Option'       => 'Option.php',
+        'alxmsl\\Cli\\Parameter'    => 'Parameter.php',
+        'alxmsl\\Cli\\Exception\\RequiredOptionException'              => 'Exception/RequiredOptionException.php',
+        'alxmsl\\Cli\\Exception\\DuplicateOptionException'             => 'Exception/DuplicateOptionException.php',
+        'alxmsl\\Cli\\Exception\\CliCallException'                     => 'Exception/CliCallException.php',
+        'alxmsl\\Cli\\Exception\\ParameterEventTypeException'          => 'Exception/ParameterEventTypeException.php',
+        'alxmsl\\Cli\\Exception\\ParameterNotFoundException'           => 'Exception/ParameterNotFoundException.php',
+        'alxmsl\\Cli\\Exception\\IncorrectParameterValueTypeException' => 'Exception/IncorrectParameterValueTypeException.php',
+        'alxmsl\\Cli\\Exception\\UnsupportedParameterTypeException'    => 'Exception/UnsupportedParameterTypeException.php',
+        'alxmsl\\Cli\\Exception\\IncorrectEnvironmentException'        => 'Exception/IncorrectEnvironmentException.php',
+        'alxmsl\\Cli\\Exception\\IncorrectSAPIException'               => 'Exception/IncorrectSAPIException.php',
+        'alxmsl\\Cli\\Exception\\CliLogicException'                    => 'Exception/CliLogicException.php',
     );
 
     /**
