@@ -1,0 +1,14 @@
+{
+    "name": "alxmsl/cli",
+    "description": "Simple library for php-cli script options support",
+    "authors": [
+        {
+            "name": "Alexey Maslov",
+            "email": "alexey.y.maslov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {"alxmsl\\Cli\\": "source/"}
+    }
+}
