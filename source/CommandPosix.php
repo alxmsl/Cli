@@ -31,7 +31,7 @@ final class CommandPosix extends Command {
         $postfix = '';
         if ($Option->getType() == Option::TYPE_STRING) {
             $postfix .= ':';
-            if ($Option->isRequired()) {
+            if (!$Option->isRequired()) {
                 $postfix .= ':';
             }
         }

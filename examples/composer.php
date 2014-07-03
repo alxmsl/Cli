@@ -24,7 +24,8 @@ $Command = new CommandPosix();
 $Command->appendHelpParameter('show help screen option');
 
 // Append one required option. And...
-$Command->appendParameter(new Option('option', 'o', 'some option', Option::TYPE_BOOLEAN, true));
+$Command->appendParameter(new Option('option', 'o', 'some option', Option::TYPE_BOOLEAN));
+$Command->appendParameter(new Option('value', 'v', 'some value', Option::TYPE_STRING, true));
 
 // ...just parse the command
 $Command->parse();
