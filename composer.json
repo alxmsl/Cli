@@ -1,6 +1,7 @@
 {
     "name": "alxmsl/cli",
     "description": "Simple library for php-cli script options support",
+    "keywords": ["posix", "cli", "command-line"],
     "license": "WTFPL",
     "authors": [
         {
@@ -8,7 +9,10 @@
             "email": "alexey.y.maslov@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "support": {
+        "email": "alexey.y.maslov@gmail.com",
+        "issues": "https://github.com/alxmsl/Cli/issues"
+    },
     "autoload": {
         "psr-4": {"alxmsl\\Cli\\": "source/"}
     }
