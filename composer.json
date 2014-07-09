@@ -1,6 +1,5 @@
 {
     "name": "alxmsl/cli",
-    "version": "1.0.0",
     "description": "Simple library for php-cli script options support",
     "license": "WTFPL",
     "authors": [
