@@ -64,12 +64,12 @@ class Option extends Parameter {
         parent::__construct($description, $required);
         $this->long = (string) $long;
         if (empty($this->long)) {
-            throw new UnexpectedValueException();
+            throw new UnexpectedValueException('long option name must be not empty');
         }
 
         $this->short = substr($short, 0, 1);
         if (empty($this->short)) {
-            throw new UnexpectedValueException();
+            throw new UnexpectedValueException('short option name must be not empty');
         }
 
         $this->type = (int) $type;
@@ -87,7 +87,7 @@ class Option extends Parameter {
             case self::TYPE_STRING:
                 break;
             default:
-                throw new IncorrectParameterValueTypeException();
+                throw new IncorrectParameterValueTypeException('option type must be bool or string');
         }
     }
 

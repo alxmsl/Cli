@@ -51,13 +51,13 @@ abstract class Command {
     protected $events = array();
 
     /**
-     * @thorws IncorrectSAPIException when PHP SAPI is not CLI
+     * @throws IncorrectSAPIException when PHP SAPI is not CLI
      * @throws IncorrectEnvironmentException when script name was not find
      */
     public function __construct() {
         switch (true) {
-            case PHP_SAPI != 'cli':
-                throw new IncorrectSAPIException();
+            case !$this->isCLI():
+                throw new IncorrectSAPIException('current SAPI is not CLI');
             case array_key_exists('_', $_SERVER) && !is_null($_SERVER['_']):
                 $this->script = $_SERVER['_'];
                 $this->command = $_SERVER['argv'][0];
@@ -66,7 +66,7 @@ abstract class Command {
                 $this->command = $_SERVER['SCRIPT_NAME'];
                 break;
             default:
-                throw new IncorrectEnvironmentException();
+                throw new IncorrectEnvironmentException('incorrect command initialization');
         }
     }
 
@@ -129,6 +129,13 @@ abstract class Command {
             default:
                 throw new UnsupportedParameterTypeException();
         }
+    }
+
+    /**
+     * @return bool true, if current SAPI is CLI
+     */
+    public function isCLI() {
+        return PHP_SAPI == 'cli';
     }
 
     /**
