@@ -54,7 +54,7 @@ class Option extends Parameter {
 
     /**
      * @param string $long long name of option
-     * @param bool $short short name of option
+     * @param string $short short name of option
      * @param string $description description of option. Default value is empty
      * @param int $type option value type. Default value is boolean
      * @param bool $required option requirements. Default value is false

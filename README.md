@@ -7,9 +7,9 @@ Advantages
 1. Lightweight - only two classes for work with command options
 2. Events helps to up your code flexibility
 3. Self-autoloading. You need to include only one file
-4. Independed namespace helps to use Cli on different projects and frameworks
+4. Independent namespace helps to use Cli on different projects and frameworks
 
-Posibilities
+Possibilities
 -------
 You can set short or long option name, while call php-cli script. The same lines may be equal
 
